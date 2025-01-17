@@ -4,6 +4,8 @@
 
 This is a Library Management System that allows for the management of books, authors, and members. The system supports functionalities such as adding, updating, deleting books/authors, registering members, borrowing and returning books, and tracking overdue books.
 
+---
+
 ## Features
 
 - Add, update, and delete books and authors.
@@ -11,11 +13,54 @@ This is a Library Management System that allows for the management of books, aut
 - Track borrowed books and return deadlines.
 - View overdue books for a specific member.
 
+---
+
 ## Tech Stack
 
-- Backend: Node.js (Express)
-- Database: Sequelize (MySQL)
-- Testing: Postman
+- **Backend**: Node.js (Express)
+- **Database**: Sequelize (MySQL)
+- **Testing Tools**: Postman, MySQL, Workbench
+- **Version Control**:Git
+
+---
+
+## Prerequisites
+
+Before running this application, ensure the following software is installed on your system:
+
+- Node.js (v14 or later)
+- MySQL (v8 or later)
+- Postman (for API testing)
+- Git (for version control)
+
+---
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/ganesh2394/Library-Management-System.git
+   cd Library-Management-System
+   ```
+
+2. Install Dependencies : Install all required package using npm
+   ```bash
+   install npm
+   ```
+
+---
+
+## Configure Environment Variables:
+
+Create a .env file in the root directory and configure the following variables:
+
+- DB_HOST=localhost
+- DB_USER=root
+- DB_PASSWORD=yourpassword
+- DB_NAME=library_db
+
+---
 
 ## Database Setup
 
@@ -28,6 +73,25 @@ The database schema and tables structure are included in the `{docs/database}` f
    ```sql
    CREATE DATABASE library_db;
    ```
+2. **Import the SQL Dump Folder**:
+   Import the sql dump files which is provide in the `docs/database` folder using the preferred database client:
+   ```bash
+   mysql -u root -p library_db < docs/database.sql
+   ```
+
+---
+
+## Run the Application :
+
+Start the development server :
+
+```bash
+npm run dev
+```
+
+The server will run on http://localhost:3000
+
+---
 
 ## API Documentation
 
@@ -47,6 +111,7 @@ Access the API documentation online: [Postman Documentation](https://documenter.
 ### API Endpoints
 
 #### Authors
+
 - `GET /api/authors` - Get all authors.
 - `POST /api/authors` - Add a new author.
 - `PUT /api/authors/{id}` - Update an author by ID.
@@ -54,6 +119,7 @@ Access the API documentation online: [Postman Documentation](https://documenter.
 - `GET /api/authors/{authorId}/books` - Get all books by a specific author.
 
 #### Books
+
 - `GET /api/books` - Get all books.
 - `POST /api/books` - Add a new book.
 - `PUT /api/books/{id}` - Update a book by ID.
@@ -62,21 +128,15 @@ Access the API documentation online: [Postman Documentation](https://documenter.
 - `GET /api/books/search` - Search for books.
 
 #### Borrow & Return
+
 - `POST /api/borrows/borrow` - Borrow a book.
 - `POST /api/borrows/return` - Return a borrowed book.
 - `GET /api/borrows/{memberId}/history` - Get borrowing history of a specific member.
 
 #### Members
+
 - `GET /api/members` - Get all members.
 - `POST /api/members` - Add a new member.
 - `PUT /api/members/{id}` - Update a member by ID.
 - `DELETE /api/members/{id}` - Delete a member by ID.
 - `GET /api/members/{memberId}/borrow-history` - Get borrowing history of a specific member.
-
-
-## Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/ganesh2394/Library-Management-System.git
-   ```
