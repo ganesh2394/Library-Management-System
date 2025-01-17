@@ -1,0 +1,1833 @@
+{
+	"info": {
+		"_postman_id": "55fa7b79-963c-4b30-ae00-53c1a0465a9c",
+		"name": "Library Management System",
+		"description": "In Postman, you can test the **Library Management System (LMS)** API by sending HTTP requests to various endpoints that handle operations like adding books, registering members, and tracking borrowed books. Postman allows you to create, test, and validate the API requests and responses for the LMS system.\n\n- **POST**: Add new books, authors, and members to the database.\n    \n- **GET**: Fetch details of books, authors, and member borrowing history.\n    \n- **PUT**: Update book or author details, or mark books as returned.\n    \n- **DELETE**: Remove books, authors, or members from the system.\n    \n- **Queries**: Use GET requests to fetch books by a specific author, calculate total books borrowed by genre, or check overdue books for a specific member.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38671941"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Add a Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"The Great Gatsby\",\r\n    \"genre\": \"Fiction\",\r\n    \"availability\": true,\r\n    \"authorId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books"
+							]
+						},
+						"description": "This API endpoint is used to add a new book to the library management system."
+					},
+					"response": [
+						{
+							"name": "add a book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"The Great Gatsby\",\r\n    \"genre\": \"Fiction\",\r\n    \"availability\": true,\r\n    \"authorId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/books",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-VmvjYnzOfeo9ZJTC9+7lzyPoNR0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:35:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"availability\": true,\n    \"id\": 2,\n    \"title\": \"The Great Gatsby\",\n    \"genre\": \"Fiction\",\n    \"authorId\": 1,\n    \"updatedAt\": \"2025-01-17T07:35:11.572Z\",\n    \"createdAt\": \"2025-01-17T07:35:11.572Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books"
+							]
+						},
+						"description": "StartFragmentThis request fetches all the books stored in the system, returning details such as the book title, author ID, genre, and availability status.EndFragment"
+					},
+					"response": [
+						{
+							"name": "get all books",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/books",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1030"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"406-1sPet0yInYgXbUpdJX09LfkZqDU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 08:19:24 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"title\": \"The Great Gatsby\",\n        \"genre\": \"Fiction\",\n        \"availability\": false,\n        \"authorId\": 1,\n        \"createdAt\": \"2025-01-17T07:35:11.000Z\",\n        \"updatedAt\": \"2025-01-17T07:36:22.000Z\",\n        \"Author\": {\n            \"id\": 1,\n            \"name\": \"J.R.R. Tolkien\",\n            \"bio\": \"Author of The Lord of the Rings\",\n            \"createdAt\": \"2025-01-17T07:34:19.000Z\",\n            \"updatedAt\": \"2025-01-17T07:34:19.000Z\"\n        }\n    },\n    {\n        \"id\": 3,\n        \"title\": \"The Hobbit\",\n        \"genre\": \"Fantasy\",\n        \"availability\": true,\n        \"authorId\": 3,\n        \"createdAt\": \"2025-01-17T08:15:35.000Z\",\n        \"updatedAt\": \"2025-01-17T08:15:35.000Z\",\n        \"Author\": {\n            \"id\": 3,\n            \"name\": \"George R.R. Martin\",\n            \"bio\": \"Author of A Song of Ice and Fire series\",\n            \"createdAt\": \"2025-01-17T07:39:58.000Z\",\n            \"updatedAt\": \"2025-01-17T07:39:58.000Z\"\n        }\n    },\n    {\n        \"id\": 7,\n        \"title\": \"To Kill a Mockingbird\",\n        \"genre\": \"Fiction\",\n        \"availability\": true,\n        \"authorId\": 4,\n        \"createdAt\": \"2025-01-17T08:17:52.000Z\",\n        \"updatedAt\": \"2025-01-17T08:17:52.000Z\",\n        \"Author\": {\n            \"id\": 4,\n            \"name\": \"George Orwell\",\n            \"bio\": \"Author of 1984 and Animal Farm, known for his critique of totalitarianism.\",\n            \"createdAt\": \"2025-01-17T08:17:27.000Z\",\n            \"updatedAt\": \"2025-01-17T08:17:27.000Z\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update a Book",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"availability\": false,\r\n  \"title\": \"The Great Gatsby - Revised Edition\",\r\n  \"genre\": \"Classic Fiction\",\r\n  \"authorId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/books/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books",
+								"2"
+							]
+						},
+						"description": "This API endpoint updates the details of the book with the given `id` (in this case, `2`). You can change attributes such as `title`, `genre`, `authorId`, and `availability`."
+					},
+					"response": [
+						{
+							"name": "update a book",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"availability\": false,\r\n  \"title\": \"The Great Gatsby - Revised Edition\",\r\n  \"genre\": \"Classic Fiction\",\r\n  \"authorId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/books/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"books",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "191"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bf-XRp6OdDMmTK+aufBJHgFQGo22rY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 08:24:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"title\": \"The Great Gatsby - Revised Edition\",\n    \"genre\": \"Classic Fiction\",\n    \"availability\": false,\n    \"authorId\": 1,\n    \"createdAt\": \"2025-01-17T07:35:11.000Z\",\n    \"updatedAt\": \"2025-01-17T08:24:19.260Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a Book",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/books/7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books",
+								"7"
+							]
+						},
+						"description": "This API endpoint deletes the book with the given `id` (in this case, `7`) from the system."
+					},
+					"response": [
+						{
+							"name": "delete a book",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/books/7",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"books",
+										"7"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "39"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"27-2sU+wH8LsO2HgYqDa0daGODIV30\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 08:25:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Books by a Specific Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/books/author/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"books",
+								"author",
+								"1"
+							]
+						},
+						"description": "This endpoint retrieves all books written by a specific author, identified by their `authorId`.(in this case `2`)"
+					},
+					"response": [
+						{
+							"name": "get books by a specific author",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/books/author/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"books",
+										"author",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "353"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"161-lSTvzzC4ITcfvSNmxQvKApqs0FU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 08:32:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 2,\n        \"title\": \"The Great Gatsby - Revised Edition\",\n        \"genre\": \"Classic Fiction\",\n        \"availability\": false,\n        \"authorId\": 1,\n        \"createdAt\": \"2025-01-17T07:35:11.000Z\",\n        \"updatedAt\": \"2025-01-17T08:24:19.000Z\",\n        \"Author\": {\n            \"id\": 1,\n            \"name\": \"J.R.R. Tolkien\",\n            \"bio\": \"Author of The Lord of the Rings\",\n            \"createdAt\": \"2025-01-17T07:34:19.000Z\",\n            \"updatedAt\": \"2025-01-17T07:34:19.000Z\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Search Book",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"description": "A **Book** in a Library Management System represents a physical or digital item available for borrowing. It typically includes attributes such as title, author, genre, availability status, and a unique identifier."
+		},
+		{
+			"name": "Members",
+			"item": [
+				{
+					"name": "Add a new member",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Jane Smith\",\r\n    \"contactInfo\": \"janesmith@gmail.com\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"members"
+							]
+						},
+						"description": "This request adds a new member to the system by providing their name and contact information. The server processes the request and stores the member's details in the database."
+					},
+					"response": [
+						{
+							"name": "add a new member",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Jane Smith\",\r\n    \"contactInfo\": \"janesmith@gmail.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/members",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"members"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "142"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8e-6yQp9US3zzBeY3uXc4sqHEOzMTc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:17:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"name\": \"Jane Smith\",\n    \"contactInfo\": \"janesmith@gmail.com\",\n    \"updatedAt\": \"2025-01-17T07:17:11.094Z\",\n    \"createdAt\": \"2025-01-17T07:17:11.094Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"members"
+							]
+						},
+						"description": "The request fetches details of all members stored in the database, including their IDs, names, and contact information"
+					},
+					"response": [
+						{
+							"name": "get all members",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/members",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"members"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "425"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1a9-Q3Z03qC5yv7JaEk3ixsII9UDCmY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:18:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Alice Johnson\",\n        \"contactInfo\": \"alice@gmail.com\",\n        \"createdAt\": \"2025-01-17T07:16:01.000Z\",\n        \"updatedAt\": \"2025-01-17T07:16:01.000Z\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"John Doe\",\n        \"contactInfo\": \"johndoe@gmail.com\",\n        \"createdAt\": \"2025-01-17T07:16:53.000Z\",\n        \"updatedAt\": \"2025-01-17T07:16:53.000Z\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Jane Smith\",\n        \"contactInfo\": \"janesmith@gmail.com\",\n        \"createdAt\": \"2025-01-17T07:17:11.000Z\",\n        \"updatedAt\": \"2025-01-17T07:17:11.000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Update a member",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Alice Brown\",\r\n    \"contactInfo\": \"alicebrown@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/members/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"members",
+								"1"
+							]
+						},
+						"description": "The request updates the member's information, such as their name or contact details, identified by their unique ID (`1` in this case)."
+					},
+					"response": [
+						{
+							"name": "update a member",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Alice Brown\",\r\n    \"contactInfo\": \"alicebrown@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/members/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"members",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-wrCwxevVnOQMYUbuK5FyNWOThkc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:21:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Alice Brown\",\n    \"contactInfo\": \"alicebrown@gmail.com\",\n    \"createdAt\": \"2025-01-17T07:16:01.000Z\",\n    \"updatedAt\": \"2025-01-17T07:21:01.643Z\"\n}"
+						},
+						{
+							"name": "update a member",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Alice Brown\",\r\n    \"contactInfo\": \"alicebrown@gmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/members/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"members",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "144"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"90-wrCwxevVnOQMYUbuK5FyNWOThkc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:21:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Alice Brown\",\n    \"contactInfo\": \"alicebrown@gmail.com\",\n    \"createdAt\": \"2025-01-17T07:16:01.000Z\",\n    \"updatedAt\": \"2025-01-17T07:21:01.643Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a member",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/members/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"members",
+								"3"
+							]
+						},
+						"description": "The request deletes the member identified by their unique ID (`3` in this case) from the database."
+					},
+					"response": [
+						{
+							"name": "delete a member",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/members/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"members",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-mGllRP1qRmAD9PbZFGkh7ucQDnE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:21:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Member deleted successfully\"\n}"
+						},
+						{
+							"name": "delete a member",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/members/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"members",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-mGllRP1qRmAD9PbZFGkh7ucQDnE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:21:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Member deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get borrowing history for a member",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/members/1/borrow-history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"members",
+								"1",
+								"borrow-history"
+							]
+						},
+						"description": "The request fetches the borrowing history for the member identified by their unique ID (`1` in this case). The response includes a list of all books borrowed by the member, along with relevant details."
+					},
+					"response": [
+						{
+							"name": "get borrow history",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/members/1/borrow-history",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"members",
+										"1",
+										"borrow-history"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2-l9Fw4VUO7kr8CvBlt4zaMCqXZ0w\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:24:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[]"
+						}
+					]
+				}
+			],
+			"description": "A **Member** in a Library Management System represents a user who can borrow books. Members typically have attributes such as name, contact information, membership ID, and borrowing history. They are key entities for managing book loans and tracking overdue items."
+		},
+		{
+			"name": "Borrows",
+			"item": [
+				{
+					"name": "Borrow a Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"bookId\": 2,\r\n    \"memberId\": 1\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/borrows/borrow",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"borrows",
+								"borrow"
+							]
+						},
+						"description": "This request enables a member (identified by `memberId`) to borrow a specific book (identified by `bookId`). The system records the borrow action, setting a return deadline based on the library's borrowing rules."
+					},
+					"response": [
+						{
+							"name": "borrow a book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"bookId\": 2,\r\n    \"memberId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/borrows/borrow",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"borrows",
+										"borrow"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-ZtVwKyTmcl9hDSn4VySOkw0mDpw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:36:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book borrowed successfully\"\n}"
+						},
+						{
+							"name": "borrow a book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"bookId\": 2,\r\n    \"memberId\": 1\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/borrows/borrow",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"borrows",
+										"borrow"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-ZtVwKyTmcl9hDSn4VySOkw0mDpw\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:36:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book borrowed successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Borrow History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/borrows/1/history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"borrows",
+								"1",
+								"history"
+							]
+						},
+						"description": "This request fetches the borrow history of the book identified by its unique ID (`1` in this case). It includes information about all members who have borrowed the book, borrow dates, return deadlines, and statuses."
+					},
+					"response": [
+						{
+							"name": "get borrow history",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/borrows/1/history",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"borrows",
+										"1",
+										"history"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "518"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"206-pKQ1h1LxfGxBwIB9rMjhl0VXn3w\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:38:13 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"borrowDate\": \"2025-01-17T07:36:22.000Z\",\n        \"returnDate\": null,\n        \"returnStatus\": false,\n        \"createdAt\": \"2025-01-17T07:36:22.000Z\",\n        \"updatedAt\": \"2025-01-17T07:36:22.000Z\",\n        \"bookId\": 2,\n        \"memberId\": 1,\n        \"Book\": {\n            \"id\": 2,\n            \"title\": \"The Great Gatsby\",\n            \"genre\": \"Fiction\",\n            \"availability\": false,\n            \"authorId\": 1,\n            \"createdAt\": \"2025-01-17T07:35:11.000Z\",\n            \"updatedAt\": \"2025-01-17T07:36:22.000Z\"\n        },\n        \"Member\": {\n            \"id\": 1,\n            \"name\": \"Alice Brown\",\n            \"contactInfo\": \"alicebrown@gmail.com\",\n            \"createdAt\": \"2025-01-17T07:16:01.000Z\",\n            \"updatedAt\": \"2025-01-17T07:21:01.000Z\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Return a Book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"borrowId\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/borrows/return",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"borrows",
+								"return"
+							]
+						},
+						"description": "This API endpoint allows a member to return a borrowed book. It updates the borrow record's `returnStatus` and the book's `availability` status."
+					},
+					"response": [
+						{
+							"name": "return a book",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"borrowId\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/borrows/return",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"borrows",
+										"return"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "40"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"28-coVCJHyeU/v6fqaX7LHL7UXeI0w\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 08:47:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Book returned successfully\"\n}"
+						}
+					]
+				}
+			],
+			"description": "A **Borrow** in a Library Management System represents the action of a member borrowing a book. It includes details like the borrowed book, borrow date, return deadline, and the status (e.g., returned, overdue). The borrowing history helps track which books a member has borrowed and when they are due to be returned."
+		},
+		{
+			"name": "Authors",
+			"item": [
+				{
+					"name": "Add a new author",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"George R.R. Martin\",\r\n    \"bio\": \"Author of A Song of Ice and Fire series\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"authors"
+							]
+						},
+						"description": "This request adds a new author to the system with the provided name and biography. The system processes the request and stores the author's details in the database."
+					},
+					"response": [
+						{
+							"name": "add new author",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"J.R.R. Tolkien\",\r\n  \"bio\": \"Author of The Lord of the Rings\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/authors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"authors"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "150"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"96-KgLxaCoZeSVZr64za2dylOJsDPY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:34:19 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"J.R.R. Tolkien\",\n    \"bio\": \"Author of The Lord of the Rings\",\n    \"updatedAt\": \"2025-01-17T07:34:19.558Z\",\n    \"createdAt\": \"2025-01-17T07:34:19.558Z\"\n}"
+						},
+						{
+							"name": "add a new author",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"George R.R. Martin\",\r\n    \"bio\": \"Author of A Song of Ice and Fire series\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/authors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"authors"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "162"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a2-ZF/wtu7s/dreKIoXXzPOr0OvznI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:39:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"name\": \"George R.R. Martin\",\n    \"bio\": \"Author of A Song of Ice and Fire series\",\n    \"updatedAt\": \"2025-01-17T07:39:58.423Z\",\n    \"createdAt\": \"2025-01-17T07:39:58.423Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get all authors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/authors",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"authors"
+							]
+						},
+						"description": "This request fetches all the authors from the system, returning a list of their names, biographies, and unique IDs."
+					},
+					"response": [
+						{
+							"name": "get all authors",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/authors",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"authors"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "466"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1d2-VqL3q0TypdTkLaLOTs+1t5lf7dg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:40:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"J.R.R. Tolkien\",\n        \"bio\": \"Author of The Lord of the Rings\",\n        \"createdAt\": \"2025-01-17T07:34:19.000Z\",\n        \"updatedAt\": \"2025-01-17T07:34:19.000Z\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"J.R.R. Tolkien\",\n        \"bio\": \"Author of The Lord of the Rings\",\n        \"createdAt\": \"2025-01-17T07:39:36.000Z\",\n        \"updatedAt\": \"2025-01-17T07:39:36.000Z\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"George R.R. Martin\",\n        \"bio\": \"Author of A Song of Ice and Fire series\",\n        \"createdAt\": \"2025-01-17T07:39:58.000Z\",\n        \"updatedAt\": \"2025-01-17T07:39:58.000Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Delete an author",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/authors/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"authors",
+								"2"
+							]
+						},
+						"description": "This request deletes the author identified by their unique ID (`2` in this case) from the system. All books associated with this author may need to be reassigned or removed as per the system's design."
+					},
+					"response": [
+						{
+							"name": "delete an author",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/authors/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"authors",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"29-y5E/g1GAJiT/kj57/wpYgn2BeFk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 07:42:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"message\": \"Author deleted successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update an Author",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"George R.R. Martin\",\r\n  \"bio\": \"Author of A Song of Ice and Fire series [updated]\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/authors/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"authors",
+								"3"
+							]
+						},
+						"description": "This API endpoint allows you to update the details of the author with `id` 3 in the system. You can update the author's name and bio."
+					},
+					"response": [
+						{
+							"name": "update an author",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"George R.R. Martin\",\r\n  \"bio\": \"Author of A Song of Ice and Fire series [updated]\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/api/authors/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"authors",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "172"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ac-zW7uiJNzwAH1ok2jHkM5p0vtqYQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 08:55:31 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"name\": \"George R.R. Martin\",\n    \"bio\": \"Author of A Song of Ice and Fire series [updated]\",\n    \"createdAt\": \"2025-01-17T07:39:58.000Z\",\n    \"updatedAt\": \"2025-01-17T08:55:31.696Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get All Books by a Specific Author",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/api/authors/3/books",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"authors",
+								"3",
+								"books"
+							]
+						},
+						"description": "This API endpoint allows you to retrieve all books written by a specific author identified by the `authorId`."
+					},
+					"response": [
+						{
+							"name": "get all books by a specific author",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/api/authors/3/books",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"authors",
+										"3",
+										"books"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "160"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a0-QmAo3n2E15V5as8CH2wH4bF/QLE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 17 Jan 2025 08:58:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"title\": \"The Hobbit\",\n        \"genre\": \"Fantasy\",\n        \"availability\": true,\n        \"authorId\": 3,\n        \"createdAt\": \"2025-01-17T08:15:35.000Z\",\n        \"updatedAt\": \"2025-01-17T08:15:35.000Z\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"description": "An **Author** in a Library Management System represents a writer or creator of books stored in the system. Authors typically have details like their name, biography, and associated books. They are central to organizing and categorizing the books in the library, making it easier for users to search for books by their authors."
+		}
+	]
+}
