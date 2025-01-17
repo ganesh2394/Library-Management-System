@@ -23,7 +23,7 @@ The API documentation for the Library Management System is available as a Postma
 
 ### How to Use the Postman Collection
 
-1. Download the Postman collection file: [Library_API_Postman_Collection.json](docs/Library_API_Postman_Collection.json)
+1. Download the Postman collection file: [Library_API_Postman_Collection.json](/docs/Library%20Management%20System.postman_collection.json)
 2. Open Postman and click on **Import**.
 3. Upload the `Library_API_Postman_Collection.json` file.
 4. Access all the API endpoints and test them.
