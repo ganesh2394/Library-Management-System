@@ -21,6 +21,10 @@ This is a Library Management System that allows for the management of books, aut
 
 The API documentation for the Library Management System is available as a Postman collection.
 
+### Online API Documentation
+Access the API documentation online: [Postman Documentation](https://documenter.getpostman.com/view/38671941/2sAYQakWbA)
+
+
 ### How to Use the Postman Collection
 
 1. Download the Postman collection file: [Library_API_Postman_Collection.json](/docs/Library%20Management%20System.postman_collection.json)
