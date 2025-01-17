@@ -140,3 +140,16 @@ Access the API documentation online: [Postman Documentation](https://documenter.
 - `PUT /api/members/{id}` - Update a member by ID.
 - `DELETE /api/members/{id}` - Delete a member by ID.
 - `GET /api/members/{memberId}/borrow-history` - Get borrowing history of a specific member.
+
+---
+
+## Acknowledgment
+
+This project was provided by **TrueiGTech** as part of an assignment to evaluate my skills and abilities in building a real-world application. The task was designed to assess my understanding of **Node.js**, **Express.js**, **Sequelize ORM**, and **MySQL** as well as my ability to develop efficient and scalable back-end solutions. I appreciate the opportunity to work on this assignment and showcase my technical skills.
+
+---
+
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
