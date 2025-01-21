@@ -67,38 +67,41 @@ const getBooksByAuthor = async (req, res) => {
 
 // Search books by title, author, or genre
 const searchBooks = async (req, res) => {
-      try {
-        const {title, author, genre} = req.body;
+  try {
+    const { title, author, genre } = req.body;
 
-        let query = {};
-        
-        if(title){
-           query.title = {[Op.iLike]:`%${title}%`};
-        }
+    let query = {};
 
-        if(author){
-           const authorRecord = await Author.findOne({ where: { name: { [Op.iLike]: `%${author}%` } } });
-           if (authorRecord) {
-             query.authorId = authorRecord.id;  
-           }
-        }
+    if (title) {
+      query.title = { [Op.iLike]: `%${title}%` };
+    }
 
-        if(genre){
-          query.genre = {[Op.iLike]:`%${genre}%`};
-        }
-
-        const books  = await Book.findAll({where : query});
-
-        if(books .length === 0){
-          return res.status(404).json({ message: "No books found matching your search criteria" });
-        }
-
-        res.status(200).json(books);
-
-      } catch (error) {
-        res.status(500).json({ error: error.message });
+    if (author) {
+      const authorRecord = await Author.findOne({
+        where: { name: { [Op.iLike]: `%${author}%` } },
+      });
+      if (authorRecord) {
+        query.authorId = authorRecord.id;
       }
-}
+    }
+
+    if (genre) {
+      query.genre = { [Op.iLike]: `%${genre}%` };
+    }
+
+    const books = await Book.findAll({ where: query });
+
+    if (books.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "No books found matching your search criteria" });
+    }
+
+    res.status(200).json(books);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
 
 module.exports = {
   getAllBooks,
