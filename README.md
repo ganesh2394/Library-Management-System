@@ -19,7 +19,7 @@ This is a Library Management System that allows for the management of books, aut
 
 - **Backend**: Node.js (Express)
 - **Database**: Sequelize (MySQL)
-- **Testing Tools**: Postman, MySQL, Workbench
+- **Testing Tools**: Postman, MySQL Workbench
 - **Version Control**:Git
 
 ---
@@ -148,7 +148,6 @@ Access the API documentation online: [Postman Documentation](https://documenter.
 This project was provided by **TRUEiGTECH** as part of an assignment to evaluate my skills and abilities in building a real-world application. The task was designed to assess my understanding of **Node.js**, **Express.js**, **Sequelize ORM**, and **MySQL** as well as my ability to develop efficient and scalable back-end solutions. I appreciate the opportunity to work on this assignment and showcase my technical skills.
 
 ---
-
 
 ## License
 
