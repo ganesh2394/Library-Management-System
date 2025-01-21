@@ -4,6 +4,8 @@
 
 This is a Library Management System that allows for the management of books, authors, and members. The system supports functionalities such as adding, updating, deleting books/authors, registering members, borrowing and returning books, and tracking overdue books.
 
+The **frontend part** of this project is built using **EJS** and **Tailwind CSS**. You can find it here:
+- [Frontend Repository](https://github.com/ganesh2394/Library-Management-System-Frontend)
 ---
 
 ## Features
@@ -140,6 +142,13 @@ Access the API documentation online: [Postman Documentation](https://documenter.
 - `PUT /api/members/{id}` - Update a member by ID.
 - `DELETE /api/members/{id}` - Delete a member by ID.
 - `GET /api/members/{memberId}/borrow-history` - Get borrowing history of a specific member.
+
+---
+
+## Related Projects
+This is the backend for the Library Management System, which handles API requests for managing books, authors, members, and borrow records.
+The **frontend part** of this project is built using **EJS** and **Tailwind CSS**. You can find it here:
+- [Frontend Repository](https://github.com/ganesh2394/Library-Management-System-Frontend)
 
 ---
 
